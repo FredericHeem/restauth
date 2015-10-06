@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports.Client = require('./RestAuth');
+module.exports.Client = require('./Client');

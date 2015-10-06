@@ -1,9 +1,7 @@
 import 'mochawait';
-var assert = require('assert');
-var _ = require('lodash');
-var Promise = require('bluebird');
-var debug = require('debug');
-var RestAuth = require('../src/').RestAuth;
+import shoud from 'should';
+import assert from 'assert';
+var Client = require('../src/').Client;
 
 describe('RestAuth', function() {
   'use strict';
@@ -14,21 +12,39 @@ describe('RestAuth', function() {
     }
   });
 
+  let client;
+  const config = {
+    username:"alice",
+    password:"password",
+    url:"http://localhost:3000/api/"
+  };
 
   before(async () => {
-
+    log.debug('');
   });
 
   after(async () => {
 
   });
 
-  describe('Invalid Constructor', function() {
+  describe('Invalid Constructor', () => {
     it('no options', done => {
       (function(){
-        new RestAuth()
-      }).should.throw();
+        new Client();
+      }).should.not.throw();
       done();
+    });
+  });
+  describe('Standard ops', () => {
+    before(async () => {
+      client = new Client(config);
+
+      let resLogin = await client.login();
+      assert(resLogin);
+    });
+    it('get', async () => {
+      let users = await client.get('v1/me');
+      assert(users);
     });
   });
 });
