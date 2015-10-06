@@ -13,7 +13,7 @@ describe('RestAuth', function() {
   });
 
   let client;
-  const config = {
+  let config = {
     username:"alice",
     password:"password",
     url:"http://localhost:3000/api/"

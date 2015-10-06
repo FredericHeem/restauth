@@ -4,7 +4,9 @@
 
 A Rest client supporting authentication. Useful for testing authenticated REST API.
 
-# [![Test Coverage](https://codeclimate.com/github/FredericHeem/restauth/badges/coverage.svg)](https://codeclimate.com/github/FredericHeem/restauth/coverage) [![Code Climate](https://codeclimate.com/github/FredericHeem/restauth/badges/gpa.svg)](https://codeclimate.com/github/FredericHeem/restauth)  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
+[![NPM version][npm-image]][npm-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
 
 ## Install
 
@@ -15,7 +17,20 @@ $ npm install --save restauth
 ## Usage
 
 ```js
-var Client = require('restauth').Client;
+
+import {Client} from 'restauth';
+
+let config = {
+  username:"alice",
+  password:"password",
+  url:"http://localhost:3000/api/"
+};
+
+let client = new Client(config);
+let resLogin = await client.login();
+assert(resLogin);
+let me = await client.get('v1/me');
+assert(me);
 
 ```
 
