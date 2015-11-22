@@ -46,10 +46,10 @@ export default class Client {
       return this._ops("PATCH", action, [200, 204], param);
     }
 
-    patch(action, param) {
+    put(action, param) {
       return this._ops("PUT", action, [200, 204], param);
     }
-    
+
     delete(action, param) {
       return this._ops("DELETE", action, [204], param);
     }
