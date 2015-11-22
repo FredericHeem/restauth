@@ -1,6 +1,6 @@
 {
   "name": "restauth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An Authenticated Rest Client",
   "homepage": "https://github.com/FredericHeem/restauth",
   "author": {
