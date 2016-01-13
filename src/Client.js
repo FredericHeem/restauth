@@ -28,7 +28,7 @@ export default class Client {
             return request.cookie(cookie);
           });
         }
-        console.log("me.cookies:", me.cookies);
+        //console.log("me.cookies:", me.cookies);
 
         if (resCodes.indexOf(res.statusCode) == -1){
           throw res;
@@ -75,7 +75,7 @@ function updateRequestWithKey(client, data){
     let jar = request.jar();
     jar._jar.rejectPublicSuffixes = false;
     _.each(client.cookies, cookie => {
-      console.log("cookie:" + cookie);
+      //console.log("cookie:" + cookie);
       jar.setCookie(cookie, client.url);
     });
 
