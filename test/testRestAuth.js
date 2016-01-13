@@ -16,7 +16,7 @@ describe('RestAuth', function() {
   let config = {
     username:"alice",
     password:"password",
-    url:"http://localhost:3000/api/"
+    url:"http://localhost:9000/api/"
   };
 
   before(async () => {
