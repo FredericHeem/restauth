@@ -2,8 +2,7 @@
 
 > RestAuth
 
-A Rest client supporting authentication. Useful for testing authenticated REST API.
-
+A Rest client supporting authentication with JSON Web Token and cookies. Useful for testing authenticated REST API.
 
 [![NPM version][npm-image]][npm-url]
 [![Dependency Status][daviddm-image]][daviddm-url]

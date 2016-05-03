@@ -13,7 +13,9 @@
   "main": "build/index.js",
   "keywords": [
     "rest",
-    "authentication"
+    "authentication",
+    "jwt",
+    "cookie"
   ],
   "dependencies": {
     "bluebird": "^2.9.25",
