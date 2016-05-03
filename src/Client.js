@@ -7,20 +7,28 @@ export default class Client {
     constructor(config = {}, logOptions) {
         log = require('logfilename')(__filename, logOptions);
         this.config = config;
-        this.url = this.config.url || 'http://localhost:3000/api/';
+        this.url = this.config.url || 'http://localhost:9000/api/';
     }
     _ops(ops, action, resCodes, param) {
       log.debug(`${ops} ${action} with %s to `, param ? JSON.stringify(param) : "no param", this.url);
       let me = this;
       let data = updateRequestWithKey(this, {});
+
       if(param){
         data.json = param;
       }
       data.method = ops;
+      // Json Web Token
+      if(this.jwt){
+        data.headers = {
+          Authorization: 'Bearer ' + this.jwt
+        };
+      }
       let requestFn = Promise.promisify(request);
       return requestFn(this.url + action, data)
       .spread(function(res, body) {
-        log.debug("headers ", JSON.stringify(res.headers));
+        //log.debug("headers ", JSON.stringify(res.headers));
+        //log.debug("body ", JSON.stringify(body));
         let cookiesIn = res.headers['set-cookie'];
         if (cookiesIn) {
           me.cookies = _.map(cookiesIn, cookie => {
@@ -65,7 +73,14 @@ export default class Client {
           password:this.config.password
       };
 
-      return this.post('v1/auth/login', param || paramDefault);
+      return this.post('v1/auth/login', param || paramDefault)
+      .then(body => {
+        if(body.token){
+          log.debug("jwt token ", body.token);
+          this.jwt = body.token;
+        }
+        return body;
+      });
     }
 }
 
