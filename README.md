@@ -9,6 +9,8 @@ A Rest client supporting authentication with JSON Web Token and cookies. Useful 
 
 ## Install
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/FredericHeem/restauth.svg)](https://greenkeeper.io/)
+
 ```sh
 $ npm install --save restauth
 ```
